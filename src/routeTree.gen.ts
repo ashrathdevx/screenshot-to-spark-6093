@@ -10,12 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AiSaasRouteImport } from './routes/ai-saas'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as SolutionsRouteImport } from './routes/solutions'
+import { Route as UnifiedCommerceRouteImport } from './routes/unified-commerce'
+import { Route as PosIndexRouteImport } from './routes/pos.index'
+import { Route as PosIndustryRouteImport } from './routes/pos.$industry'
+import { Route as WebsitesIndexRouteImport } from './routes/websites.index'
+import { Route as WebsitesServiceRouteImport } from './routes/websites.$service'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AiSaasRoute = AiSaasRouteImport.update({
+  id: '/ai-saas',
+  path: '/ai-saas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -28,35 +46,131 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SolutionsRoute = SolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnifiedCommerceRoute = UnifiedCommerceRouteImport.update({
+  id: '/unified-commerce',
+  path: '/unified-commerce',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PosIndexRoute = PosIndexRouteImport.update({
+  id: '/pos/',
+  path: '/pos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PosIndustryRoute = PosIndustryRouteImport.update({
+  id: '/pos/$industry',
+  path: '/pos/$industry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsitesIndexRoute = WebsitesIndexRouteImport.update({
+  id: '/websites/',
+  path: '/websites/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsitesServiceRoute = WebsitesServiceRouteImport.update({
+  id: '/websites/$service',
+  path: '/websites/$service',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-saas': typeof AiSaasRoute
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
+  '/solutions': typeof SolutionsRoute
+  '/unified-commerce': typeof UnifiedCommerceRoute
+  '/pos/$industry': typeof PosIndustryRoute
+  '/websites/$service': typeof WebsitesServiceRoute
+  '/pos/': typeof PosIndexRoute
+  '/websites/': typeof WebsitesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-saas': typeof AiSaasRoute
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
+  '/solutions': typeof SolutionsRoute
+  '/unified-commerce': typeof UnifiedCommerceRoute
+  '/pos/$industry': typeof PosIndustryRoute
+  '/websites/$service': typeof WebsitesServiceRoute
+  '/pos': typeof PosIndexRoute
+  '/websites': typeof WebsitesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/ai-saas': typeof AiSaasRoute
   '/contact': typeof ContactRoute
   '/pricing': typeof PricingRoute
+  '/solutions': typeof SolutionsRoute
+  '/unified-commerce': typeof UnifiedCommerceRoute
+  '/pos/$industry': typeof PosIndustryRoute
+  '/websites/$service': typeof WebsitesServiceRoute
+  '/pos/': typeof PosIndexRoute
+  '/websites/': typeof WebsitesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/pricing'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/ai-saas'
+    | '/contact'
+    | '/pricing'
+    | '/solutions'
+    | '/unified-commerce'
+    | '/pos/$industry'
+    | '/websites/$service'
+    | '/pos/'
+    | '/websites/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/pricing'
-  id: '__root__' | '/' | '/contact' | '/pricing'
+  to:
+    | '/'
+    | '/about'
+    | '/ai-saas'
+    | '/contact'
+    | '/pricing'
+    | '/solutions'
+    | '/unified-commerce'
+    | '/pos/$industry'
+    | '/websites/$service'
+    | '/pos'
+    | '/websites'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/ai-saas'
+    | '/contact'
+    | '/pricing'
+    | '/solutions'
+    | '/unified-commerce'
+    | '/pos/$industry'
+    | '/websites/$service'
+    | '/pos/'
+    | '/websites/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AiSaasRoute: typeof AiSaasRoute
   ContactRoute: typeof ContactRoute
   PricingRoute: typeof PricingRoute
+  SolutionsRoute: typeof SolutionsRoute
+  UnifiedCommerceRoute: typeof UnifiedCommerceRoute
+  PosIndustryRoute: typeof PosIndustryRoute
+  WebsitesServiceRoute: typeof WebsitesServiceRoute
+  PosIndexRoute: typeof PosIndexRoute
+  WebsitesIndexRoute: typeof WebsitesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -66,6 +180,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ai-saas': {
+      id: '/ai-saas'
+      path: '/ai-saas'
+      fullPath: '/ai-saas'
+      preLoaderRoute: typeof AiSaasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -82,13 +210,63 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/solutions': {
+      id: '/solutions'
+      path: '/solutions'
+      fullPath: '/solutions'
+      preLoaderRoute: typeof SolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unified-commerce': {
+      id: '/unified-commerce'
+      path: '/unified-commerce'
+      fullPath: '/unified-commerce'
+      preLoaderRoute: typeof UnifiedCommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pos/': {
+      id: '/pos/'
+      path: '/pos'
+      fullPath: '/pos/'
+      preLoaderRoute: typeof PosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pos/$industry': {
+      id: '/pos/$industry'
+      path: '/pos/$industry'
+      fullPath: '/pos/$industry'
+      preLoaderRoute: typeof PosIndustryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/websites/': {
+      id: '/websites/'
+      path: '/websites'
+      fullPath: '/websites/'
+      preLoaderRoute: typeof WebsitesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/websites/$service': {
+      id: '/websites/$service'
+      path: '/websites/$service'
+      fullPath: '/websites/$service'
+      preLoaderRoute: typeof WebsitesServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AiSaasRoute: AiSaasRoute,
   ContactRoute: ContactRoute,
   PricingRoute: PricingRoute,
+  SolutionsRoute: SolutionsRoute,
+  UnifiedCommerceRoute: UnifiedCommerceRoute,
+  PosIndustryRoute: PosIndustryRoute,
+  WebsitesServiceRoute: WebsitesServiceRoute,
+  PosIndexRoute: PosIndexRoute,
+  WebsitesIndexRoute: WebsitesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

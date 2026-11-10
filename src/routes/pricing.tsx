@@ -15,8 +15,8 @@ const TABS = ["pos", "websites", "unified"] as const;
 type Tab = (typeof TABS)[number];
 
 export const Route = createFileRoute("/pricing")({
-  validateSearch: (s: Record<string, unknown>): { tab?: Tab } => ({
-    tab: TABS.includes(s.tab as Tab) ? (s.tab as Tab) : undefined,
+  validateSearch: (s: Record<string, unknown>): { tab?: Tab | undefined } => ({
+    tab: TABS.includes(s["tab"] as Tab) ? (s["tab"] as Tab) : undefined,
   }),
   head: () => ({
     meta: [
