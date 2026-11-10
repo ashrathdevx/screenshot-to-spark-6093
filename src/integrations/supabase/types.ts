@@ -14,13 +14,81 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      inquiries: {
+        Row: {
+          business_name: string
+          consent: boolean
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          industry: string
+          package: string | null
+          phone: string
+          preferred_contact: string
+          requirements: string
+          service: string
+          source_hash: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          business_name: string
+          consent?: boolean
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          industry: string
+          package?: string | null
+          phone: string
+          preferred_contact: string
+          requirements: string
+          service: string
+          source_hash?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          business_name?: string
+          consent?: boolean
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          industry?: string
+          package?: string | null
+          phone?: string
+          preferred_contact?: string
+          requirements?: string
+          service?: string
+          source_hash?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      submit_inquiry: {
+        Args: {
+          _business_name: string
+          _consent: boolean
+          _email: string
+          _full_name: string
+          _industry: string
+          _package: string
+          _phone: string
+          _preferred_contact: string
+          _requirements: string
+          _service: string
+          _source_hash: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
