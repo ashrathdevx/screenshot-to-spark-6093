@@ -84,6 +84,9 @@ const CONCEPTS = [
   },
 ];
 
+const POS_START = POS_PACKAGES[0]!;
+const WEB_START = WEBSITE_PACKAGES[0]!;
+
 function Home() {
   return (
     <>
@@ -245,15 +248,15 @@ function Home() {
               {
                 title: "POS Software",
                 tab: "pos" as const,
-                start: `${formatPrice(POS_PACKAGES[0].setup!)} setup`,
-                sub: `+ ${formatPrice(POS_PACKAGES[0].monthly!)} per month`,
+                start: `${formatPrice(POS_START.setup!)} setup`,
+                sub: `+ ${formatPrice(POS_START.monthly!)} per month`,
                 plans: POS_PACKAGES.map((p) => p.name).join(" · "),
               },
               {
                 title: "Website Services",
                 tab: "websites" as const,
-                start: `${formatPrice(WEBSITE_PACKAGES[0].setup!)} setup`,
-                sub: `Website care from ${formatPrice({ amount: WEBSITE_PACKAGES[0].monthly!.amount })}/month`,
+                start: `${formatPrice(WEB_START.setup!)} setup`,
+                sub: `Website care from ${formatPrice({ amount: WEB_START.monthly!.amount })}/month`,
                 plans: WEBSITE_PACKAGES.map((p) => p.name).join(" · "),
               },
               {
