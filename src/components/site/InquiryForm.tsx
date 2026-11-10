@@ -23,7 +23,7 @@ import { submitInquiry } from "@/lib/inquiry.functions";
 import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-function FieldError({ id, message }: { id: string; message?: string }) {
+function FieldError({ id, message }: { id: string; message?: string | undefined }) {
   if (!message) return null;
   return (
     <p id={id} role="alert" className="mt-2 text-sm text-destructive">
@@ -39,8 +39,8 @@ export function InquiryForm({
   defaultService,
   defaultPackage,
 }: {
-  defaultService?: ServiceKey;
-  defaultPackage?: string;
+  defaultService?: ServiceKey | undefined;
+  defaultPackage?: string | undefined;
 }) {
   const submit = useServerFn(submitInquiry);
   const startedAt = useRef(0);

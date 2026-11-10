@@ -34,7 +34,7 @@ export function ScrollEffects() {
         const { reduce, desktop } = ctx.conditions as { reduce: boolean; desktop: boolean };
         const heroEls = gsap.utils
           .toArray<HTMLElement>("[data-hero]")
-          .sort((a, b) => Number(a.dataset.hero || 0) - Number(b.dataset.hero || 0));
+          .sort((a, b) => Number(a.dataset["hero"] || 0) - Number(b.dataset["hero"] || 0));
 
         if (reduce) {
           gsap.set(heroEls, { opacity: 1 });
@@ -43,7 +43,7 @@ export function ScrollEffects() {
 
         const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
         heroEls.forEach((el, i) => {
-          const isVisual = el.dataset.heroVisual !== undefined;
+          const isVisual = el.dataset["heroVisual"] !== undefined;
           tl.fromTo(
             el,
             isVisual
@@ -105,7 +105,7 @@ export function ScrollEffects() {
 
         if (desktop) {
           gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
-            const amount = Number(el.dataset.parallax || 8);
+            const amount = Number(el.dataset["parallax"] || 8);
             gsap.to(el, {
               yPercent: -amount,
               ease: "none",

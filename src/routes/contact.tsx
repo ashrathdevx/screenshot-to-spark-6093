@@ -10,12 +10,12 @@ const TITLE = "Contact SYNX — Let's Build What's Next";
 const DESC =
   "Tell SYNX about your business. Call, email or WhatsApp Shaik Ashrath, or send an inquiry for POS software, websites or unified commerce.";
 
-type ContactSearch = { service?: ServiceKey; package?: string };
+type ContactSearch = { service?: ServiceKey | undefined; package?: string | undefined };
 
 export const Route = createFileRoute("/contact")({
   validateSearch: (search: Record<string, unknown>): ContactSearch => {
-    const service = SERVICE_OPTIONS.find((s) => s.value === search.service)?.value;
-    const pkg = ALL_PACKAGES.find((p) => p.id === search.package && (!service || p.service === service));
+    const service = SERVICE_OPTIONS.find((s) => s.value === search["service"])?.value;
+    const pkg = ALL_PACKAGES.find((p) => p.id === search["package"] && (!service || p.service === service));
     return { service: service ?? pkg?.service, package: pkg?.id };
   },
   head: () => ({
