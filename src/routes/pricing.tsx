@@ -4,14 +4,15 @@ import { Info } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PageHero } from "@/components/site/Section";
 import { PackageCard } from "@/components/site/PackageCard";
+import { LocalSeoPricing } from "@/components/site/LocalSeoPricing";
 import { CtaBand } from "@/components/site/Blocks";
 import { POS_PACKAGES, PRICING_NOTE, UNIFIED_PACKAGES, WEBSITE_PACKAGES } from "@/data/pricing";
 
-const TITLE = "Pricing — SYNX POS, Websites & Unified Commerce";
+const TITLE = "Pricing — SYNX POS, Websites, Local SEO & Unified Commerce";
 const DESC =
-  "Clear INR pricing for SYNX POS software and website packages, with setup and monthly fees, inclusions and exclusions. Unified commerce is custom quoted.";
+  "Clear INR pricing for SYNX POS, website, Google Business Profile and local SEO packages, with unified commerce custom quoted.";
 
-const TABS = ["pos", "websites", "unified"] as const;
+const TABS = ["pos", "websites", "seo", "unified"] as const;
 type Tab = (typeof TABS)[number];
 
 export const Route = createFileRoute("/pricing")({
@@ -46,6 +47,11 @@ const NOTES: Record<Tab, string[]> = {
     "Different systems only synchronise where that synchronisation is scoped and implemented.",
     "Every unified solution is quoted after understanding your stores, channels and workflow.",
   ],
+  seo: [
+    "Google ranking positions and lead volumes are not guaranteed; outcomes depend on competition, location and site condition.",
+    "Client-provided access, approvals and accurate business information are needed to complete work.",
+    "Paid advertising budgets, third-party tools and software subscriptions are not included in these SEO fees.",
+  ],
 };
 
 function PricingPage() {
@@ -69,6 +75,7 @@ function PricingPage() {
               {[
                 { v: "pos", l: "POS Software" },
                 { v: "websites", l: "Website Services" },
+                { v: "seo", l: "Google & Local SEO" },
                 { v: "unified", l: "Unified Commerce" },
               ].map((t) => (
                 <TabsTrigger
@@ -110,6 +117,17 @@ function PricingPage() {
                 </div>
               </TabsContent>
             ))}
+            <TabsContent value="seo" className="mt-12 animate-in fade-in slide-in-from-bottom-2 duration-500">
+              <LocalSeoPricing />
+              <div className="mt-10 rounded-3xl border border-border bg-card p-6 md:p-8">
+                <div className="flex items-center gap-2 font-medium">
+                  <Info className="size-4 text-steel" aria-hidden /> Good to know
+                </div>
+                <ul className="mt-4 grid gap-3 text-[0.9375rem] text-muted-foreground md:grid-cols-3">
+                  {NOTES.seo.map((note) => <li key={note}>{note}</li>)}
+                </ul>
+              </div>
+            </TabsContent>
           </Tabs>
         </div>
       </section>
