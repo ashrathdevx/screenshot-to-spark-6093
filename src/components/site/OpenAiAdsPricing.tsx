@@ -7,7 +7,10 @@ const PLANS = [
   {
     name: "Launch My Ad",
     cadence: "one-time",
-    price: "₹2,999",
+    price: "₹999",
+    adSpend: "Example ChatGPT ad budget: ₹5,075 for 7 days",
+    total: "First 7 days: about ₹6,074",
+    totalDetail: "₹5,075 ad budget + ₹999 SYNX setup fee. Setup only; ongoing management is not included.",
     summary: "Get your brand campaign ready to run.",
     items: [
       "Set up one ChatGPT or Reddit ad campaign",
@@ -19,7 +22,10 @@ const PLANS = [
   {
     name: "Weekly Ad Care",
     cadence: "per week",
-    price: "₹1,499",
+    price: "₹499",
+    adSpend: "Example ChatGPT ad budget: ₹5,075 for 7 days",
+    total: "7-day total: about ₹5,574",
+    totalDetail: "₹5,075 ad budget + ₹499 SYNX weekly fee. First week of a new campaign: about ₹6,573 including setup.",
     summary: "Keep your live campaign checked and on track.",
     items: [
       "Check ad delivery, spend, views and clicks",
@@ -30,7 +36,10 @@ const PLANS = [
   {
     name: "Monthly Ad Management",
     cadence: "per month",
-    price: "₹4,999",
+    price: "₹1,499",
+    adSpend: "Example ChatGPT ad budget: ₹21,750 for 30 days",
+    total: "30-day total: about ₹23,249",
+    totalDetail: "₹21,750 ad budget + ₹1,499 SYNX monthly fee. First month of a new campaign: about ₹24,248 including setup.",
     summary: "Steady support for one campaign on your chosen platform.",
     popular: true,
     items: [
@@ -120,8 +129,13 @@ export function OpenAiAdsPricing() {
                     {plan.price}
                   </p>
                   <p className={`mt-1 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
-                    {plan.cadence} · SYNX service fee
+                    SYNX fee · {plan.cadence}
                   </p>
+                </div>
+                <div className={`mt-5 rounded-2xl p-4 ${plan.popular ? "bg-white/10" : "bg-muted"}`}>
+                  <p className={`text-sm font-semibold ${plan.popular ? "text-on-navy" : "text-foreground"}`}>{plan.adSpend}</p>
+                  <p className={`mt-2 text-base font-semibold ${plan.popular ? "text-silver" : "text-steel"}`}>{plan.total}</p>
+                  <p className={`mt-1 text-xs leading-relaxed ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>{plan.totalDetail}</p>
                 </div>
                 <ul className={`mt-6 flex-1 space-y-3 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
                   {plan.items.map((item) => (
@@ -143,9 +157,9 @@ export function OpenAiAdsPricing() {
       </div>
 
       <div className="mt-8 rounded-3xl border border-border bg-card p-6 md:p-8">
-        <h3 className="text-lg font-semibold">Your ad budget goes directly to the platform</h3>
+        <h3 className="text-lg font-semibold">Your ad budget and SYNX fee are separate</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          Pay OpenAI or Reddit for ad delivery, plus the SYNX service fee shown above. OpenAI currently lists a minimum INR campaign budget of ₹725 per day—about ₹21,750 for 30 days. Actual delivery may vary. Reddit ad budgets are set separately in Reddit Ads.
+          The totals above are ChatGPT examples using OpenAI’s current minimum daily budget of ₹725. You pay OpenAI directly for ads and SYNX separately for setup or management. Actual spend can vary, and the 7-day and 30-day totals are estimates before applicable taxes. For Reddit, the ad budget is selected in Reddit Ads, so the total depends on the client’s chosen budget.
         </p>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           OpenAI chooses which eligible sponsored ad appears based on conversation relevance, campaign settings and its ad auction. Ads are labeled and do not change ChatGPT’s answers. Location options, ad approval and results depend on account and campaign eligibility.
