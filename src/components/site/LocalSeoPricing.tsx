@@ -16,15 +16,15 @@ const PLANS = [
     groups: [
       {
         title: "Setup",
-        items: ["Google Business Profile audit and optimization", "Primary category, services and service-area review", "Local keyword and competitor baseline"],
+        items: ["Improve your Google Maps business profile", "Set the right categories, services and service areas", "Check what nearby customers search for and who you compete with"],
       },
       {
         title: "Weekly",
-        items: ["One Google Business Profile post", "Photo and profile activity check", "Review-response guidance"],
+        items: ["Publish one Google Business Profile post", "Check your profile details, photos and new reviews", "Prepare helpful replies to new customer reviews"],
       },
       {
         title: "Monthly",
-        items: ["Local visibility and profile performance report", "Citation consistency spot-check", "Next-month action list"],
+        items: ["Report profile views, calls and Google Maps visibility", "Check your business details on key directories", "Share a clear action plan for next month"],
       },
       {
         title: "3-Month Bonus",
@@ -42,15 +42,15 @@ const PLANS = [
     groups: [
       {
         title: "Setup",
-        items: ["Everything in Local Maps Starter", "Website SEO and local landing-page audit", "Search Console and analytics review, where access is available"],
+        items: ["Everything in Local Maps Starter, plus website improvements", "Review key website pages and local search setup", "Set up or review Google Search Console and Analytics, with access"],
       },
       {
         title: "Weekly",
-        items: ["One Google Business Profile post", "Website and profile health checks", "Review and competitor activity review"],
+        items: ["Publish one Google Business Profile post", "Check that your website and profile details work", "Review new customer feedback and nearby competitors"],
       },
       {
         title: "Monthly",
-        items: ["On-page improvements for priority pages", "Local keyword and Maps visibility report", "One helpful local content update"],
+        items: ["Improve page titles, headings and local information", "Report Google Maps and website search performance", "Publish one useful update for local customers"],
       },
       {
         title: "3-Month Bonus",
@@ -67,15 +67,15 @@ const PLANS = [
     groups: [
       {
         title: "Setup",
-        items: ["Everything in Local Shop + Website Growth", "Priority-area and competitor mapping", "Multi-area site structure and profile opportunity review"],
+        items: ["Everything in Local Shop + Website Growth, plus area planning", "Choose target locations and review local competitors", "Plan website pages for each service area"],
       },
       {
         title: "Weekly",
-        items: ["One Google Business Profile post", "Priority-area visibility checks", "Technical and competitor monitoring"],
+        items: ["Publish one Google Business Profile post", "Check your visibility across target locations", "Check for website issues and competitor changes"],
       },
       {
         title: "Monthly",
-        items: ["Up to two priority-area page improvements", "Expanded local keyword and competitor report", "Monthly strategy and conversion review"],
+        items: ["Improve up to two service or location pages", "Report search visibility and enquiries by area, where tracked", "Set next month's priorities for each target area"],
       },
       {
         title: "3-Month Bonus",
