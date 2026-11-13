@@ -5,6 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PageHero } from "@/components/site/Section";
 import { PackageCard } from "@/components/site/PackageCard";
 import { LocalSeoPricing } from "@/components/site/LocalSeoPricing";
+import { OpenAiAdsPricing } from "@/components/site/OpenAiAdsPricing";
 import { CtaBand } from "@/components/site/Blocks";
 import { POS_PACKAGES, PRICING_NOTE, UNIFIED_PACKAGES, WEBSITE_PACKAGES } from "@/data/pricing";
 
@@ -12,7 +13,7 @@ const TITLE = "Pricing — SYNX POS, Websites, Local SEO & Unified Commerce";
 const DESC =
   "Clear INR pricing for SYNX POS, website, Google Business Profile and local SEO packages, with unified commerce custom quoted.";
 
-const TABS = ["pos", "websites", "seo", "unified"] as const;
+const TABS = ["pos", "websites", "seo", "openai-ads", "unified"] as const;
 type Tab = (typeof TABS)[number];
 
 export const Route = createFileRoute("/pricing")({
@@ -52,6 +53,11 @@ const NOTES: Record<Tab, string[]> = {
     "Client-provided access, approvals and accurate business information are needed to complete work.",
     "Paid advertising budgets, third-party tools and software subscriptions are not included in these SEO fees.",
   ],
+  "openai-ads": [
+    "OpenAI Ads Manager self-service is currently available in India; account readiness, billing and ad review are required.",
+    "OpenAI and Reddit media spend is paid to each platform separately from SYNX service fees.",
+    "Ad approval, delivery, clicks and sales depend on platform review, auctions and campaign performance.",
+  ],
 };
 
 function PricingPage() {
@@ -71,17 +77,18 @@ function PricingPage() {
             value={tab}
             onValueChange={(v) => navigate({ search: { tab: v as Tab }, replace: true, resetScroll: false })}
           >
-            <TabsList className="mx-auto flex h-auto w-full max-w-xl rounded-full border border-border bg-card p-1.5">
+            <TabsList className="mx-auto grid h-auto w-full max-w-4xl grid-cols-2 gap-1.5 rounded-3xl border border-border bg-card p-1.5 sm:grid-cols-5 sm:rounded-full">
               {[
                 { v: "pos", l: "POS Software" },
                 { v: "websites", l: "Website Services" },
-                { v: "seo", l: "Google & Local SEO" },
+                { v: "seo", l: "SEO" },
+                { v: "openai-ads", l: "OpenAI + Reddit Ads" },
                 { v: "unified", l: "Unified Commerce" },
               ].map((t) => (
                 <TabsTrigger
                   key={t.v}
                   value={t.v}
-                  className="h-11 flex-1 rounded-full text-[0.875rem] font-medium text-muted-foreground transition-colors data-[state=active]:bg-navy data-[state=active]:text-on-navy data-[state=active]:shadow-none sm:text-[0.9375rem]"
+                  className="h-11 min-w-0 rounded-full px-2 text-[0.8125rem] font-medium text-muted-foreground transition-colors data-[state=active]:bg-navy data-[state=active]:text-on-navy data-[state=active]:shadow-none sm:px-3 sm:text-[0.9375rem]"
                 >
                   {t.l}
                 </TabsTrigger>
@@ -125,6 +132,17 @@ function PricingPage() {
                 </div>
                 <ul className="mt-4 grid gap-3 text-[0.9375rem] text-muted-foreground md:grid-cols-3">
                   {NOTES.seo.map((note) => <li key={note}>{note}</li>)}
+                </ul>
+              </div>
+            </TabsContent>
+            <TabsContent value="openai-ads" className="mt-12 animate-in fade-in slide-in-from-bottom-2 duration-500">
+              <OpenAiAdsPricing />
+              <div className="mt-10 rounded-3xl border border-border bg-card p-6 md:p-8">
+                <div className="flex items-center gap-2 font-medium">
+                  <Info className="size-4 text-steel" aria-hidden /> Good to know
+                </div>
+                <ul className="mt-4 grid gap-3 text-[0.9375rem] text-muted-foreground md:grid-cols-3">
+                  {NOTES["openai-ads"].map((note) => <li key={note}>{note}</li>)}
                 </ul>
               </div>
             </TabsContent>
