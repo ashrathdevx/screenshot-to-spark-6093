@@ -5,37 +5,38 @@ import { SITE } from "@/lib/site";
 
 const PLANS = [
   {
-    name: "One-Time Ad Setup",
+    name: "Launch My Ad",
     cadence: "one-time",
-    price: "₹7,500",
-    summary: "Get your first branded campaign ready to launch.",
+    price: "₹2,999",
+    summary: "Get your brand campaign ready to run.",
     items: [
-      "Set up one campaign on ChatGPT Ads or Reddit Ads",
-      "Write ad copy with your business name and offer",
-      "Add your website or WhatsApp link and prepare the campaign for review",
+      "Set up one ChatGPT or Reddit ad campaign",
+      "Create an ad with your brand name, offer and website or WhatsApp link",
+      "Choose the campaign location and audience where available",
+      "Prepare the campaign for platform review",
     ],
   },
   {
     name: "Weekly Ad Care",
     cadence: "per week",
-    price: "₹3,500",
-    summary: "Keep one active campaign checked and improving.",
+    price: "₹1,499",
+    summary: "Keep your live campaign checked and on track.",
     items: [
-      "Check campaign delivery, spend, views and clicks",
-      "Make one round of ad or audience improvements",
-      "Send you a short weekly update",
+      "Check ad delivery, spend, views and clicks",
+      "Make one round of audience or ad improvements",
+      "Send you a simple weekly update",
     ],
   },
   {
     name: "Monthly Ad Management",
     cadence: "per month",
-    price: "₹12,000",
-    summary: "Ongoing support for your chosen ad platform.",
+    price: "₹4,999",
+    summary: "Steady support for one campaign on your chosen platform.",
     popular: true,
     items: [
-      "Manage up to two campaigns on ChatGPT Ads or Reddit Ads",
-      "Check and improve campaigns each week",
-      "Share a monthly report with spend, views, clicks and next steps",
+      "Manage one active ChatGPT or Reddit campaign",
+      "Check and improve it each week",
+      "Share a monthly report and clear next steps",
     ],
   },
 ] as const;
@@ -44,65 +45,110 @@ export function OpenAiAdsPricing() {
   return (
     <section aria-labelledby="openai-ads-heading" className="mt-16">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="eyebrow">OpenAI &amp; Reddit Ads</p>
+        <p className="eyebrow">ChatGPT Ads by SYNX</p>
         <h2 id="openai-ads-heading" className="text-h2 mt-4 text-balance">
-          Put your brand in front of relevant audiences
+          Help local customers discover your brand in ChatGPT
         </h2>
         <p className="mt-4 text-muted-foreground">
-          Your business name, offer and link can appear in a clearly labeled sponsored ad on ChatGPT or Reddit. Choose one platform for your plan. ChatGPT ads are separate from ChatGPT answers and do not change them.
+          When someone explores a topic related to your business, your business name, offer and link may appear in a clearly labeled ChatGPT sponsored ad. It is a paid placement beside relevant conversations—not a promise to appear in ChatGPT’s answer or recommendations.
         </p>
       </div>
 
-      <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
-        {PLANS.map((plan) => {
-          const whatsappHref = `${SITE.whatsappHref}?text=${encodeURIComponent(`Hi SYNX, I'm interested in the ${plan.name} (${plan.price} ${plan.cadence}). Please share the next steps.`)}`;
+      <div className="mt-10 grid gap-5 md:grid-cols-3">
+        {[
+          {
+            title: "Get noticed at decision time",
+            copy: "Introduce your service while people are exploring options related to what you offer.",
+          },
+          {
+            title: "Reach the locations you serve",
+            copy: "Choose a target location; city, region or postal-code targeting may be available for the campaign and account.",
+          },
+          {
+            title: "Bring interested people to you",
+            copy: "Send ad clicks to your website or WhatsApp, then review views, clicks and spend in campaign reports.",
+          },
+        ].map((benefit) => (
+          <article key={benefit.title} className="surface-card p-6">
+            <h3 className="text-lg font-semibold">{benefit.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{benefit.copy}</p>
+          </article>
+        ))}
+      </div>
 
-          return (
-            <article
-              key={plan.name}
-              className={`relative flex h-full flex-col rounded-3xl border p-6 shadow-[var(--shadow-soft)] md:p-8 ${
-                plan.popular ? "theme-navy border-silver/50 bg-navy-gradient shadow-float" : "border-border bg-card"
-              }`}
-            >
-              {plan.popular && (
-                <span className="absolute right-5 top-5 rounded-full bg-silver px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-wider text-navy">
-                  Best Value
-                </span>
-              )}
-              <h3 className={`text-h3 pr-24 ${plan.popular ? "text-on-navy" : ""}`}>{plan.name}</h3>
-              <p className={`mt-3 min-h-12 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
-                {plan.summary}
-              </p>
-              <div className={`mt-6 border-t pt-6 ${plan.popular ? "border-silver/25" : "border-border"}`}>
-                <p className={`text-4xl font-semibold tracking-tight ${plan.popular ? "text-on-navy" : ""}`}>
-                  {plan.price}
+      <div className="mt-16 rounded-3xl border border-border bg-card p-6 md:p-8">
+        <h3 className="text-h3">How it works</h3>
+        <ol className="mt-5 grid gap-5 text-sm text-muted-foreground md:grid-cols-4">
+          <li><span className="font-semibold text-foreground">1. Pick your goal.</span> Choose the service, audience and location you want to reach.</li>
+          <li><span className="font-semibold text-foreground">2. Build your ad.</span> SYNX prepares your brand message, offer and destination link.</li>
+          <li><span className="font-semibold text-foreground">3. Get platform review.</span> OpenAI reviews the ad; it can run after account, billing and approval steps are complete.</li>
+          <li><span className="font-semibold text-foreground">4. Track and improve.</span> SYNX checks delivery and updates the campaign based on results.</li>
+        </ol>
+      </div>
+
+      <div className="mt-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow">Simple SYNX fees</p>
+          <h2 className="text-h2 mt-4 text-balance">Choose the support you need</h2>
+          <p className="mt-4 text-muted-foreground">
+            Choose ChatGPT Ads or Reddit Ads for your campaign. The same three simple service options apply to either platform.
+          </p>
+        </div>
+
+        <div className="mt-10 grid items-stretch gap-5 lg:grid-cols-3">
+          {PLANS.map((plan) => {
+            const whatsappHref = `${SITE.whatsappHref}?text=${encodeURIComponent(`Hi SYNX, I want to choose ${plan.name} at ${plan.price} ${plan.cadence}. I’m interested in ChatGPT Ads / Reddit Ads.`)}`;
+
+            return (
+              <article
+                key={plan.name}
+                className={`relative flex h-full flex-col rounded-3xl border p-6 shadow-[var(--shadow-soft)] md:p-8 ${
+                  plan.popular ? "theme-navy border-silver/50 bg-navy-gradient shadow-float" : "border-border bg-card"
+                }`}
+              >
+                {plan.popular && (
+                  <span className="absolute right-5 top-5 rounded-full bg-silver px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-wider text-navy">
+                    Best Value
+                  </span>
+                )}
+                <h3 className={`text-h3 pr-24 ${plan.popular ? "text-on-navy" : ""}`}>{plan.name}</h3>
+                <p className={`mt-3 min-h-12 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
+                  {plan.summary}
                 </p>
-                <p className={`mt-1 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
-                  {plan.cadence} · SYNX service fee
-                </p>
-              </div>
-              <ul className={`mt-6 flex-1 space-y-3 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
-                {plan.items.map((item) => (
-                  <li key={item} className="flex gap-2.5">
-                    <Check className={`mt-0.5 size-4 shrink-0 ${plan.popular ? "text-silver" : "text-steel"}`} aria-hidden />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button asChild variant={plan.popular ? "hero" : "navy"} className="mt-8 w-full">
-                <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
-                  Choose this plan <ArrowRight aria-hidden />
-                </a>
-              </Button>
-            </article>
-          );
-        })}
+                <div className={`mt-6 border-t pt-6 ${plan.popular ? "border-silver/25" : "border-border"}`}>
+                  <p className={`text-4xl font-semibold tracking-tight ${plan.popular ? "text-on-navy" : ""}`}>
+                    {plan.price}
+                  </p>
+                  <p className={`mt-1 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
+                    {plan.cadence} · SYNX service fee
+                  </p>
+                </div>
+                <ul className={`mt-6 flex-1 space-y-3 text-sm ${plan.popular ? "text-on-navy-muted" : "text-muted-foreground"}`}>
+                  {plan.items.map((item) => (
+                    <li key={item} className="flex gap-2.5">
+                      <Check className={`mt-0.5 size-4 shrink-0 ${plan.popular ? "text-silver" : "text-steel"}`} aria-hidden />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Button asChild variant={plan.popular ? "hero" : "navy"} className="mt-8 w-full">
+                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
+                    Choose this plan <ArrowRight aria-hidden />
+                  </a>
+                </Button>
+              </article>
+            );
+          })}
+        </div>
       </div>
 
       <div className="mt-8 rounded-3xl border border-border bg-card p-6 md:p-8">
-        <h3 className="text-lg font-semibold">Ad budget is separate</h3>
+        <h3 className="text-lg font-semibold">Your ad budget goes directly to the platform</h3>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          These prices pay for SYNX’s service. You pay ChatGPT Ads or Reddit Ads directly for ad delivery. OpenAI currently lists a minimum INR budget of ₹725 per day for ChatGPT campaigns; Reddit budgets are set separately in Reddit Ads. Ad approval, placement and results depend on each platform.
+          Pay OpenAI or Reddit for ad delivery, plus the SYNX service fee shown above. OpenAI currently lists a minimum INR campaign budget of ₹725 per day—about ₹21,750 for 30 days. Actual delivery may vary. Reddit ad budgets are set separately in Reddit Ads.
+        </p>
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          OpenAI chooses which eligible sponsored ad appears based on conversation relevance, campaign settings and its ad auction. Ads are labeled and do not change ChatGPT’s answers. Location options, ad approval and results depend on account and campaign eligibility.
         </p>
       </div>
     </section>
