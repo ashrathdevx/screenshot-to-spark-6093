@@ -133,6 +133,86 @@ const ADD_ONS = [
   },
 ] as const;
 
+const ONE_TIME_SERVICES = [
+  {
+    name: "Google Maps Complete Setup & Fix",
+    price: "₹3,500–₹5,000",
+    turnaround: "3–5 days",
+    deliverables: [
+      "Google Business Profile creation or claim assistance",
+      "Verification guidance, category selection and business description optimization",
+      "Upload of 15+ client-provided photos and service/product catalogue setup",
+    ],
+    note: "Google controls verification and profile approval; timing and approval are not guaranteed.",
+  },
+  {
+    name: "Local Citation & Directory Setup",
+    price: "₹3,000–₹4,500",
+    turnaround: "5–7 days",
+    deliverables: [
+      "Consistent business name, address and phone details prepared for listings",
+      "Submission and verification assistance for 25–30 suitable Indian directories",
+      "May include Justdial, IndiaMART, Sulekha, TradeIndia, Bing Places and Apple Maps where eligible",
+    ],
+    note: "Directory availability, acceptance and any listing fees depend on each platform.",
+  },
+  {
+    name: "In-Store Google Review Kit",
+    price: "₹2,000–₹3,000",
+    turnaround: "2–3 days",
+    deliverables: [
+      "Direct Google review link setup",
+      "Custom printable QR standee design for the billing counter",
+      "Five ready-to-send WhatsApp review request templates",
+    ],
+    note: "Requests are for genuine customer feedback; no incentives or review filtering are included.",
+  },
+  {
+    name: "Website On-Page SEO Overhaul",
+    price: "₹6,000–₹10,000",
+    turnaround: "7–10 days",
+    deliverables: [
+      "Technical website audit and keyword research",
+      "Google Search Console and Analytics setup, where access is available",
+      "On-page updates for up to 6 pages: titles, descriptions, headings, image alt text and internal links",
+    ],
+    note: "Access, existing site condition and third-party account approvals can affect the schedule.",
+  },
+  {
+    name: "Shop Website Creation (Starter Site)",
+    price: "₹12,000–₹22,000",
+    turnaround: "10–14 days",
+    deliverables: [
+      "Fast, mobile-friendly 5-page local business website",
+      "Click-to-call and direct WhatsApp inquiry buttons",
+      "Google Maps embed and basic on-page SEO",
+    ],
+    note: "This is the 5-page starter scope; the separate website build add-on covers larger 5–8 page projects.",
+  },
+  {
+    name: "Google Business Profile Suspension Appeal Support",
+    price: "₹4,000–₹7,500",
+    turnaround: "5–14 days",
+    deliverables: [
+      "Profile and policy issue review",
+      "Business name and address discrepancy checklist",
+      "Evidence checklist and preparation of an appeal through Google's official process",
+    ],
+    note: "Google makes the reinstatement decision; restoration and turnaround cannot be guaranteed.",
+  },
+  {
+    name: "WhatsApp Business & Catalog Setup",
+    price: "₹2,500–₹4,000",
+    turnaround: "2–3 days",
+    deliverables: [
+      "Professional WhatsApp Business profile setup",
+      "Upload of up to 30 products or services with prices",
+      "Greeting, away and quick-reply message configuration",
+    ],
+    note: "This is the basic app setup; the separate Catalog & Broadcast add-on covers campaign templates and optional API work.",
+  },
+] as const;
+
 const savings = (monthly: number, sprint: number) => monthly * 3 - sprint;
 const monthlyEquivalent = (sprint: number) => Math.round(sprint / 3);
 
@@ -255,6 +335,41 @@ export function LocalSeoPricing() {
             </article>
           );
         })}
+      </div>
+
+      <div className="mt-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="eyebrow">One-time services</p>
+          <h3 className="text-h2 mt-4 text-balance">Local setup and project services</h3>
+          <p className="mt-4 text-muted-foreground">
+            Fixed-scope projects with an estimated turnaround after receiving the required access and materials.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {ONE_TIME_SERVICES.map((service) => (
+            <article key={service.name} className="surface-card flex h-full flex-col p-6 md:p-8">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h4 className="text-h3">{service.name}</h4>
+                <p className="text-lg font-semibold">{service.price}</p>
+              </div>
+              <p className="mt-3 inline-flex w-fit rounded-full bg-muted px-3 py-1.5 text-xs font-medium text-foreground">
+                Turnaround: {service.turnaround}
+              </p>
+              <ul className="mt-6 flex-1 space-y-2 text-sm text-muted-foreground">
+                {service.deliverables.map((item) => (
+                  <li key={item} className="flex gap-2.5">
+                    <Check className="mt-0.5 size-4 shrink-0 text-steel" aria-hidden />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 border-t border-border pt-4 text-xs leading-relaxed text-muted-foreground">
+                {service.note}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
 
       <div className="mt-20">
